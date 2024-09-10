@@ -37,7 +37,6 @@ from sklearn.preprocessing import StandardScaler
 #     raise CustomException("An error occurred during data transformation", e)
 
 
-
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join('artifacts', 'preprocessor.pkl')
@@ -79,13 +78,13 @@ class DataTranformation:
 
             # num_pipeline = Pipeline(
             #     steps=[
-            #         ("imputer", SimpleImputer(strategy="median")),
+            #         ("Imputer", SimpleImputer(strategy="median")),
             #         ("Scaler", StandardScaler())]
 
             # )
             cat_pipeline = Pipeline(
                 steps=[
-                    # ("Imputer", SimpleImputer(strategy="most_frequent")),
+                    ("Imputer", SimpleImputer(strategy="most_frequent")),
                     ("OrdinalEncoder", OrdinalEncoder())
                 ]
             )
