@@ -69,6 +69,6 @@ class ModelTrainer:
             predicted = best_model.predict(X_test)
             AccuracyScore = accuracy_score(y_test, predicted)
 
-            return AccuracyScore
+            return AccuracyScore, best_model
         except Exception as e:
             raise CustomException(e, sys)

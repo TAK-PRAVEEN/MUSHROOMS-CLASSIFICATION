@@ -50,29 +50,28 @@ class DataTranformation:
 
     def get_data_transformer_object(self):
         try:
-            categorical_columns = [
-                                   'cap-shape',
-                                   'cap-surface',
-                                   'cap-color',
-                                   'bruises',
-                                   'odor',
-                                   'gill-attachment',
-                                   'gill-spacing',
-                                   'gill-size',
-                                   'gill-color',
-                                   'stalk-shape',
-                                   'stalk-root',
-                                   'stalk-surface-above-ring',
-                                   'stalk-surface-below-ring',
-                                   'stalk-color-above-ring',
-                                   'stalk-color-below-ring',
-                                   'veil-type',
-                                   'veil-color',
-                                   'ring-number',
-                                   'ring-type',
-                                   'spore-print-color',
-                                   'population',
-                                   'habitat']
+            categorical_columns = ['cap-shape',
+                                'cap-surface',
+                                'cap-color',
+                                'bruises',
+                                'odor',
+                                'gill-attachment',
+                                'gill-spacing',
+                                'gill-size',
+                                'gill-color',
+                                'stalk-shape',
+                                'stalk-root',
+                                'stalk-surface-above-ring',
+                                'stalk-surface-below-ring',
+                                'stalk-color-above-ring',
+                                'stalk-color-below-ring',
+                                'veil-type',
+                                'veil-color',
+                                'ring-number',
+                                'ring-type',
+                                'spore-print-color',
+                                'population',
+                                'habitat']
             
             # numerical_columns = []
 
@@ -85,7 +84,7 @@ class DataTranformation:
             cat_pipeline = Pipeline(
                 steps=[
                     ("Imputer", SimpleImputer(strategy="most_frequent")),
-                    ("OrdinalEncoder", OrdinalEncoder())
+                    # ("OrdinalEncoder", OrdinalEncoder())
                 ]
             )
             
@@ -103,6 +102,30 @@ class DataTranformation:
         
     def initiate_data_transformation(self, train_path, test_path):
         try:
+            # train_df = pd.read_csv(train_path)
+            # test_df = pd.read_csv(test_path)
+
+            # logging.info("Read train and test data completed")
+
+            # logging.info("Obtaining preprocessing object")
+
+            # preprocessing_obj = self.get_data_transformer_object()
+
+            # target_column_name = 'class'
+
+            # input_feature_train_df = train_df.drop(columns=[target_column_name], axis=1)
+            # target_feature_train_df = train_df[target_column_name]
+
+            # input_feature_test_df = test_df.drop(columns=[target_column_name], axis=1)
+            # target_feature_test_df = test_df[target_column_name]
+
+            # logging.info(f"Applying preprocessing object on training and testing dataframes")
+
+            # input_feature_train_df = pd.DataFrame(input_feature_train_df, columns=input_feature_train_df.columns)
+            # input_feature_test_df = pd.DataFrame(input_feature_test_df, columns=input_feature_test_df.columns)
+            
+            # input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
+            # input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
 
@@ -121,7 +144,7 @@ class DataTranformation:
             target_feature_test_df = test_df[target_column_name]
 
             logging.info(f"Applying preprocessing object on training and testing dataframes")
-            
+
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
@@ -147,7 +170,7 @@ class DataTranformation:
             train_df = pd.concat([train_input_df, train_target_df], axis=1)
             test_df = pd.concat([test_input_df, test_target_df], axis=1)
             
-            logging.info(f"Saved preprocessing object\n{train_df}\n{test_df}")
+            # logging.info(f"Saved preprocessing object\n{train_df}\n{test_df}")
 
             save_object(
                 file_path=self.data_transformation_config.preprocessor_obj_file_path,

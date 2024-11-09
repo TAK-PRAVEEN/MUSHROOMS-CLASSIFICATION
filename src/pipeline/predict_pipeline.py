@@ -1,9 +1,13 @@
 import sys
 import pandas as pd
+import numpy as np
 
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import load_object
+
+from sklearn.preprocessing import OrdinalEncoder
+from sklearn.impute import SimpleImputer           
 
 class PredictPipeline:
     def __init__(self):
@@ -11,13 +15,71 @@ class PredictPipeline:
 
     def predict(self, features):
         try:
+            # columns = [
+            #     'cap-shape',
+            #     'cap-surface',
+            #     'cap-color',
+            #     'bruises',
+            #     'odor',
+            #     'gill-attachment',
+            #     'gill-spacing',
+            #     'gill-size',
+            #     'gill-color',
+            #     'stalk-shape',
+            #     'stalk-root',
+            #     'stalk-surface-above-ring',
+            #     'stalk-surface-below-ring',
+            #     'stalk-color-above-ring',
+            #     'stalk-color-below-ring',
+            #     'veil-type',
+            #     'veil-color',
+            #     'ring-number',
+            #     'ring-type',
+            #     'spore-print-color',
+            #     'population',
+            #     'habitat'
+            # ]
             model_path = 'artifacts\model.pkl'
             preprocessor_path = 'artifacts\preprocessor.pkl'
             model = load_object(file_path=model_path)
             preprocessor = load_object(file_path=preprocessor_path)
-            data_scaled = preprocessor.transform(features)
+
+            ordinal_encoder = OrdinalEncoder()
+            imputer = SimpleImputer(strategy='most_frequent') 
+            features_imputed = imputer.fit_transform(features)
+
+            features_imputed_df = pd.DataFrame(features_imputed, columns=features.columns)
+
+            preprocessor.fit(features_imputed_df)
+            ordinal_encoder.fit(features_imputed_df)
+
+            data_scaled = preprocessor.transform(features_imputed_df)
             preds = model.predict(data_scaled)
-            return preds
+
+            return preds[0]
+
+            # model_path = 'artifacts\model.pkl'
+            # preprocessor_path = 'artifacts\preprocessor.pkl'
+            # model = load_object(file_path=model_path)
+            # preprocessor = load_object(file_path=preprocessor_path)
+            # features_df = pd.DataFrame(features, columns=columns)
+
+            # imputer = SimpleImputer(strategy='most_frequent')  # Change strategy to mean
+            # features_imputed = imputer.fit_transform(features_df)
+
+            # features_imputed_df = pd.DataFrame(features_imputed, columns=features_df.columns)  # Convert back to DataFrame
+            # ordinal_encoder = OrdinalEncoder()
+            # features_imputed_df_encoded = ordinal_encoder.fit_transform(features_imputed_df.to_numpy().reshape(-1, features_imputed_df.shape[1]))
+            # features_imputed_df_encoded = pd.DataFrame(features_imputed_df_encoded)
+            # preprocessor.fit(features_imputed_df_encoded)
+            # data_scaled = preprocessor.transform(features_imputed_df_encoded)
+
+            # preds = model.predict(data_scaled)
+
+            # if preds[0] >= 0.5:  # Assuming the model outputs probabilities
+            #     return "Poisonous"
+            # else:
+            #     return "Edible"
         except Exception as e:
             raise CustomException(e, sys)
 
@@ -97,3 +159,4 @@ class CustomData:
         
         except Exception as e:
             raise CustomException(e, sys)
+ 
