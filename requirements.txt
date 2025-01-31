@@ -7,4 +7,6 @@ xgboost
 flask
 pickle
 dill
+xgboost
+dill
 #-e .

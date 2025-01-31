@@ -34,6 +34,9 @@ class DataIngestion:
 
             logging.info("Train test split initiated")
 
+            df = df[["odor", "gill-color", "spore-print-color", "gill-size", "bruises", "class"]]
+            df.rename(columns={'gill-color': 'gill_color', 'spore-print-color': 'spore_print_color', 'gill-size': 'gill_size'}, inplace=True)
+
             train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
 
             train_set.to_csv(self.Ingestion_config.train_data_path, index=False, header=True)
