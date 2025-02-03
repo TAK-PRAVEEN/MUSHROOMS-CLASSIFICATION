@@ -71,7 +71,7 @@ optree==0.13.0
 packaging==24.1
 pandas==2.2.2
 parso==0.8.4
-patsy==0.5.6
+patsy== 0.5.6
 pillow==10.4.0
 platformdirs==4.2.2
 plotly==5.22.0
@@ -133,4 +133,3 @@ wrapt==1.16.0
 WTForms==3.1.2
 xgboost==2.1.1
 your-app==0.1.0
-python==3.8.0
