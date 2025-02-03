@@ -12,10 +12,3 @@ seaborn==0.13.2
 setuptools==70.3.0
 xgboost==2.1.1
 
-# WARNING(pigar): some manual fixes might be required as pigar has detected duplicate requirements for the same import name (possibly for different submodules).
-# WARNING(pigar): the following duplicate requirements are for the import name: sklearn
-scikit-learn==1.6.1
-scikit-learn-3way-split==0.0.1
-scikit-learn-VAL==0.0.1
-scikit-lexicographical-trees==0.0.4
-
