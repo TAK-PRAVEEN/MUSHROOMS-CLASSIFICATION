@@ -30,11 +30,11 @@ def predict_datapoint():
         predict_pipeline = PredictPipeline()
         pred = predict_pipeline.predict(pred_df)
         if pred == 0:
-            results = "Edible"
+            results = "Mushroom Prediction: Edible"
         elif pred == 1:
-            results = "Poisonous"
+            results = "Mushroom Prediction: Poisonous"
         else:
-            results = "Not match"
+            results = "Mushroom Prediction: Not match"
         return render_template('home.html', results=results)
     
 if __name__ == '__main__':
