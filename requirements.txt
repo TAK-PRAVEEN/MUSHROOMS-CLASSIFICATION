@@ -18,4 +18,4 @@ scikit-learn==1.6.1
 scikit-learn-3way-split==0.0.1
 scikit-learn-VAL==0.0.1
 scikit-lexicographical-trees==0.0.4
-sklearn==0.0.post12
+
