@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+from src.logger import logging
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def index():
 def predict_datapoint():
     if request.method == 'GET':
         return render_template('home.html')
-    else: 
+    else:
         data = CustomData(
             odor = request.form.get("odor"),
             gill_color = request.form.get("gill_color"),
@@ -23,6 +24,8 @@ def predict_datapoint():
             gill_size = request.form.get("gill_size"),
             bruises = request.form.get("bruises")
         )
+
+        logging.debug(f"Received data: {data}")
 
         pred_df = data.get_data_as_data_frame()
         print(pred_df)
@@ -39,3 +42,4 @@ def predict_datapoint():
     
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
+    # http://127.0.0.1:5000/ or http://localhost:5000/

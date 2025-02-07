@@ -47,8 +47,7 @@ class CustomData:
         self.gill_color = gill_color
         self.spore_print_color = spore_print_color
         self.gill_size = gill_size
-        self.bruises = bruises
-    
+        self.bruises = bruises    
     
     def get_data_as_data_frame(self):
         try:
