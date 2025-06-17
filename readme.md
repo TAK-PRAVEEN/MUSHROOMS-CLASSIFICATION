@@ -51,8 +51,6 @@ MUSHROOMS-CLASSIFICATION/
 | 🔗 Live Demo    | [Render Link](https://mushrooms-classification-w915.onrender.com/) |
 | 📄 Documentation| [Docs](https://your-doc-link.com)           |
 
-*Replace with actual URLs if available.*
-
 ---
 
 ## 📦 Setup Instructions
