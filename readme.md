@@ -21,7 +21,7 @@ This project is a Machine Learning web application designed to predict whether a
 ## 🧠 Model Details
 
 - Input: Features like gill color, odor, and spore print color
-- Output: Prediction of "Edible", "Poisonous", or "Not Match"
+- Output: Prediction of "Edible", or "Poisonous"
 - Classification using a trained pipeline (`PredictPipeline`)
 
 ---
@@ -48,7 +48,7 @@ MUSHROOMS-CLASSIFICATION/
 
 | Type            | URL (Placeholder)                           |
 |-----------------|---------------------------------------------|
-| 🔗 Live Demo    | [Render Link](https://your-render-link.com) |
+| 🔗 Live Demo    | [Render Link](https://mushrooms-classification-w915.onrender.com/) |
 | 📄 Documentation| [Docs](https://your-doc-link.com)           |
 
 *Replace with actual URLs if available.*
@@ -80,8 +80,9 @@ python app.py
 
 ## 🧑‍💻 Author
 
-**Praveen Tak**
-[GitHub Profile](https://github.com/TAK-PRAVEEN)
+**Praveen Tak:**
+- [GitHub Profile](https://github.com/TAK-PRAVEEN)
+- [LinkedIn Profile](https://www.linkedin.com/in/praveen-tak-50b669272/)
 
 ---
 
